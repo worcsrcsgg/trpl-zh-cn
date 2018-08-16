@@ -1,0 +1,406 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>D - 宏 - Rust 程序设计语言 简体中文版</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Rust 程序设计语言 简体中文版">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="_FontAwesome/css/font-awesome.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+
+    </head>
+    <body class="light">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="affix"><a href="foreword.html">前言</a></li><li class="affix"><a href="ch00-00-introduction.html">介绍</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> 入门指南</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> 安装</a></li><li><a href="ch01-02-hello-world.html"><strong aria-hidden="true">1.2.</strong> Hello, World!</a></li><li><a href="ch01-03-hello-cargo.html"><strong aria-hidden="true">1.3.</strong> Hello, Cargo!</a></li></ol></li><li><a href="ch02-00-guessing-game-tutorial.html"><strong aria-hidden="true">2.</strong> 猜猜看游戏教程</a></li><li><a href="ch03-00-common-programming-concepts.html"><strong aria-hidden="true">3.</strong> 通用编程概念</a></li><li><ol class="section"><li><a href="ch03-01-variables-and-mutability.html"><strong aria-hidden="true">3.1.</strong> 变量与可变性</a></li><li><a href="ch03-02-data-types.html"><strong aria-hidden="true">3.2.</strong> 数据类型</a></li><li><a href="ch03-03-how-functions-work.html"><strong aria-hidden="true">3.3.</strong> 函数如何工作</a></li><li><a href="ch03-04-comments.html"><strong aria-hidden="true">3.4.</strong> 注释</a></li><li><a href="ch03-05-control-flow.html"><strong aria-hidden="true">3.5.</strong> 控制流</a></li></ol></li><li><a href="ch04-00-understanding-ownership.html"><strong aria-hidden="true">4.</strong> 认识所有权</a></li><li><ol class="section"><li><a href="ch04-01-what-is-ownership.html"><strong aria-hidden="true">4.1.</strong> 什么是所有权？</a></li><li><a href="ch04-02-references-and-borrowing.html"><strong aria-hidden="true">4.2.</strong> 引用与借用</a></li><li><a href="ch04-03-slices.html"><strong aria-hidden="true">4.3.</strong> Slices</a></li></ol></li><li><a href="ch05-00-structs.html"><strong aria-hidden="true">5.</strong> 使用结构体来组织相关联的数据</a></li><li><ol class="section"><li><a href="ch05-01-defining-structs.html"><strong aria-hidden="true">5.1.</strong> 定义并实例化结构体</a></li><li><a href="ch05-02-example-structs.html"><strong aria-hidden="true">5.2.</strong> 一个使用结构体的示例程序</a></li><li><a href="ch05-03-method-syntax.html"><strong aria-hidden="true">5.3.</strong> 方法语法</a></li></ol></li><li><a href="ch06-00-enums.html"><strong aria-hidden="true">6.</strong> 枚举与模式匹配</a></li><li><ol class="section"><li><a href="ch06-01-defining-an-enum.html"><strong aria-hidden="true">6.1.</strong> 定义枚举</a></li><li><a href="ch06-02-match.html"><strong aria-hidden="true">6.2.</strong> match 控制流运算符</a></li><li><a href="ch06-03-if-let.html"><strong aria-hidden="true">6.3.</strong> if let 简洁控制流</a></li></ol></li><li><a href="ch07-00-modules.html"><strong aria-hidden="true">7.</strong> 模块</a></li><li><ol class="section"><li><a href="ch07-01-mod-and-the-filesystem.html"><strong aria-hidden="true">7.1.</strong> mod 与文件系统</a></li><li><a href="ch07-02-controlling-visibility-with-pub.html"><strong aria-hidden="true">7.2.</strong> 使用 pub 控制可见性</a></li><li><a href="ch07-03-importing-names-with-use.html"><strong aria-hidden="true">7.3.</strong> 在不同的模块中引用命名</a></li></ol></li><li><a href="ch08-00-common-collections.html"><strong aria-hidden="true">8.</strong> 通用集合类型</a></li><li><ol class="section"><li><a href="ch08-01-vectors.html"><strong aria-hidden="true">8.1.</strong> vector</a></li><li><a href="ch08-02-strings.html"><strong aria-hidden="true">8.2.</strong> 字符串</a></li><li><a href="ch08-03-hash-maps.html"><strong aria-hidden="true">8.3.</strong> 哈希 map</a></li></ol></li><li><a href="ch09-00-error-handling.html"><strong aria-hidden="true">9.</strong> 错误处理</a></li><li><ol class="section"><li><a href="ch09-01-unrecoverable-errors-with-panic.html"><strong aria-hidden="true">9.1.</strong> panic! 与不可恢复的错误</a></li><li><a href="ch09-02-recoverable-errors-with-result.html"><strong aria-hidden="true">9.2.</strong> Result 与可恢复的错误</a></li><li><a href="ch09-03-to-panic-or-not-to-panic.html"><strong aria-hidden="true">9.3.</strong> panic! 还是不 panic!</a></li></ol></li><li><a href="ch10-00-generics.html"><strong aria-hidden="true">10.</strong> 泛型、trait 与生命周期</a></li><li><ol class="section"><li><a href="ch10-01-syntax.html"><strong aria-hidden="true">10.1.</strong> 泛型数据类型</a></li><li><a href="ch10-02-traits.html"><strong aria-hidden="true">10.2.</strong> trait：定义共享的行为</a></li><li><a href="ch10-03-lifetime-syntax.html"><strong aria-hidden="true">10.3.</strong> 生命周期与引用有效性</a></li></ol></li><li><a href="ch11-00-testing.html"><strong aria-hidden="true">11.</strong> 测试</a></li><li><ol class="section"><li><a href="ch11-01-writing-tests.html"><strong aria-hidden="true">11.1.</strong> 编写测试</a></li><li><a href="ch11-02-running-tests.html"><strong aria-hidden="true">11.2.</strong> 运行测试</a></li><li><a href="ch11-03-test-organization.html"><strong aria-hidden="true">11.3.</strong> 测试的组织结构</a></li></ol></li><li><a href="ch12-00-an-io-project.html"><strong aria-hidden="true">12.</strong> 一个 I/O 项目：构建命令行程序</a></li><li><ol class="section"><li><a href="ch12-01-accepting-command-line-arguments.html"><strong aria-hidden="true">12.1.</strong> 接受命令行参数</a></li><li><a href="ch12-02-reading-a-file.html"><strong aria-hidden="true">12.2.</strong> 读取文件</a></li><li><a href="ch12-03-improving-error-handling-and-modularity.html"><strong aria-hidden="true">12.3.</strong> 重构以改进模块化与错误处理</a></li><li><a href="ch12-04-testing-the-librarys-functionality.html"><strong aria-hidden="true">12.4.</strong> 采用测试驱动开发完善库的功能</a></li><li><a href="ch12-05-working-with-environment-variables.html"><strong aria-hidden="true">12.5.</strong> 处理环境变量</a></li><li><a href="ch12-06-writing-to-stderr-instead-of-stdout.html"><strong aria-hidden="true">12.6.</strong> 将错误信息输出到标准错误而不是标准输出</a></li></ol></li><li><a href="ch13-00-functional-features.html"><strong aria-hidden="true">13.</strong> Rust 中的函数式语言功能：迭代器与闭包</a></li><li><ol class="section"><li><a href="ch13-01-closures.html"><strong aria-hidden="true">13.1.</strong> 闭包：可以捕获其环境的匿名函数</a></li><li><a href="ch13-02-iterators.html"><strong aria-hidden="true">13.2.</strong> 使用迭代器处理元素序列</a></li><li><a href="ch13-03-improving-our-io-project.html"><strong aria-hidden="true">13.3.</strong> 改进之前的 I/O 项目</a></li><li><a href="ch13-04-performance.html"><strong aria-hidden="true">13.4.</strong> 性能比较：循环对迭代器</a></li></ol></li><li><a href="ch14-00-more-about-cargo.html"><strong aria-hidden="true">14.</strong> 更多关于 Cargo 和 Crates.io 的内容</a></li><li><ol class="section"><li><a href="ch14-01-release-profiles.html"><strong aria-hidden="true">14.1.</strong> 采用发布配置自定义构建</a></li><li><a href="ch14-02-publishing-to-crates-io.html"><strong aria-hidden="true">14.2.</strong> 将 crate 发布到 Crates.io</a></li><li><a href="ch14-03-cargo-workspaces.html"><strong aria-hidden="true">14.3.</strong> Cargo 工作空间</a></li><li><a href="ch14-04-installing-binaries.html"><strong aria-hidden="true">14.4.</strong> 使用 cargo install 从 Crates.io 安装二进制文件</a></li><li><a href="ch14-05-extending-cargo.html"><strong aria-hidden="true">14.5.</strong> Cargo 自定义扩展命令</a></li></ol></li><li><a href="ch15-00-smart-pointers.html"><strong aria-hidden="true">15.</strong> 智能指针</a></li><li><ol class="section"><li><a href="ch15-01-box.html"><strong aria-hidden="true">15.1.</strong> Box<T> 指向堆上数据，并且可确定大小</a></li><li><a href="ch15-02-deref.html"><strong aria-hidden="true">15.2.</strong> 通过 Deref trait 将智能指针当作常规引用处理</a></li><li><a href="ch15-03-drop.html"><strong aria-hidden="true">15.3.</strong> Drop Trait 运行清理代码</a></li><li><a href="ch15-04-rc.html"><strong aria-hidden="true">15.4.</strong> Rc<T> 引用计数智能指针</a></li><li><a href="ch15-05-interior-mutability.html"><strong aria-hidden="true">15.5.</strong> RefCell<T> 与内部可变性模式</a></li><li><a href="ch15-06-reference-cycles.html"><strong aria-hidden="true">15.6.</strong> 引用循环与内存泄漏是安全的</a></li></ol></li><li><a href="ch16-00-concurrency.html"><strong aria-hidden="true">16.</strong> 无畏并发</a></li><li><ol class="section"><li><a href="ch16-01-threads.html"><strong aria-hidden="true">16.1.</strong> 线程</a></li><li><a href="ch16-02-message-passing.html"><strong aria-hidden="true">16.2.</strong> 消息传递</a></li><li><a href="ch16-03-shared-state.html"><strong aria-hidden="true">16.3.</strong> 共享状态</a></li><li><a href="ch16-04-extensible-concurrency-sync-and-send.html"><strong aria-hidden="true">16.4.</strong> 可扩展的并发：Sync 与 Send</a></li></ol></li><li><a href="ch17-00-oop.html"><strong aria-hidden="true">17.</strong> Rust 的面向对象编程特性</a></li><li><ol class="section"><li><a href="ch17-01-what-is-oo.html"><strong aria-hidden="true">17.1.</strong> 面向对象语言的特点</a></li><li><a href="ch17-02-trait-objects.html"><strong aria-hidden="true">17.2.</strong> 为使用不同类型的值而设计的 trait 对象</a></li><li><a href="ch17-03-oo-design-patterns.html"><strong aria-hidden="true">17.3.</strong> 面向对象设计模式的实现</a></li></ol></li><li><a href="ch18-00-patterns.html"><strong aria-hidden="true">18.</strong> 模式用来匹配值的结构</a></li><li><ol class="section"><li><a href="ch18-01-all-the-places-for-patterns.html"><strong aria-hidden="true">18.1.</strong> 所有可能会用到模式的位置</a></li><li><a href="ch18-02-refutability.html"><strong aria-hidden="true">18.2.</strong> Refutability：何时模式可能会匹配失败</a></li><li><a href="ch18-03-pattern-syntax.html"><strong aria-hidden="true">18.3.</strong> 模式的全部语法</a></li></ol></li><li><a href="ch19-00-advanced-features.html"><strong aria-hidden="true">19.</strong> 高级特征</a></li><li><ol class="section"><li><a href="ch19-01-unsafe-rust.html"><strong aria-hidden="true">19.1.</strong> 不安全的 Rust</a></li><li><a href="ch19-02-advanced-lifetimes.html"><strong aria-hidden="true">19.2.</strong> 高级生命周期</a></li><li><a href="ch19-03-advanced-traits.html"><strong aria-hidden="true">19.3.</strong> 高级 trait</a></li><li><a href="ch19-04-advanced-types.html"><strong aria-hidden="true">19.4.</strong> 高级类型</a></li><li><a href="ch19-05-advanced-functions-and-closures.html"><strong aria-hidden="true">19.5.</strong> 高级函数与闭包</a></li></ol></li><li><a href="ch20-00-final-project-a-web-server.html"><strong aria-hidden="true">20.</strong> 最后的项目: 构建多线程 web server</a></li><li><ol class="section"><li><a href="ch20-01-single-threaded.html"><strong aria-hidden="true">20.1.</strong> 单线程 web server</a></li><li><a href="ch20-02-multithreaded.html"><strong aria-hidden="true">20.2.</strong> 将单线程 server 变为多线程 server</a></li><li><a href="ch20-03-graceful-shutdown-and-cleanup.html"><strong aria-hidden="true">20.3.</strong> 优雅停机与清理</a></li></ol></li><li><a href="appendix-00.html"><strong aria-hidden="true">21.</strong> 附录</a></li><li><ol class="section"><li><a href="appendix-01-keywords.html"><strong aria-hidden="true">21.1.</strong> A - 关键字</a></li><li><a href="appendix-02-operators.html"><strong aria-hidden="true">21.2.</strong> B - 运算符与符号</a></li><li><a href="appendix-03-derivable-traits.html"><strong aria-hidden="true">21.3.</strong> C - 可派生的 trait</a></li><li><a href="appendix-04-macros.html" class="active"><strong aria-hidden="true">21.4.</strong> D - 宏</a></li><li><a href="appendix-05-translation.html"><strong aria-hidden="true">21.5.</strong> E - 本书翻译</a></li><li><a href="appendix-06-newest-features.html"><strong aria-hidden="true">21.6.</strong> F - 最新功能</a></li><li><a href="appendix-07-nightly-rust.html"><strong aria-hidden="true">21.7.</strong> G - Rust 是如何开发的与 “Nightly Rust”</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Rust 程序设计语言 简体中文版</h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="appendix-04-macros.html#a附录d---宏" id="a附录d---宏"><h2>附录D - 宏</h2></a>
+<blockquote>
+<p><a href="https://github.com/rust-lang/book/blob/master/second-edition/src/appendix-04-macros.md">appendix-04-macros.md</a>
+<br>
+commit 32215c1d96c9046c0b553a05fa5ec3ede2e125c3</p>
+</blockquote>
+<p>我们已经在本书中像 <em>println!</em> 这样使用过宏了，但还没完全探索什么是宏以及它是如何工作的。本附录以如下方式解释宏：</p>
+<ul>
+<li>什么是宏以及与函数有何区别</li>
+<li>如何定义一个声明式宏（ declarative macro ）来进行元编程（metaprogramming）</li>
+<li>如何定义一个过程式宏（ procedural macro ）来自定义 <code>derive</code> traits</li>
+</ul>
+<p>因为在 Rust 里宏仍在开发中，该附录会介绍宏的细节。宏已经改变了，在不久的将来，和语言的其他部分以及从 Rust 1.0 至今的标准库相比，将会以更快的速率改变，因此，和本书其他部分相比，本部分更有可能变得过时。由于 Rust 的稳定性保证，该处的代码将会在后续版本中继续可运行，但可能会以更优的性能或更容易的方式来写那些在此次发布版中无法实现的宏。当你尝试实现该附录任何功能时，请记住这一点。</p>
+<a class="header" href="appendix-04-macros.html#a宏和函数的区别" id="a宏和函数的区别"><h3>宏和函数的区别</h3></a>
+<p>从根本上来说，宏是一种为写其他代码而写代码的方式，即所谓的<em>元编程</em>。在附录C中，探讨了 <code>derive</code> 属性，其生成各种 trait 的实现。我们也在本书中使用过 <code>println!</code> 宏和 <code>vec!</code> 宏。所有的这些宏 <em>扩展开</em> 来以生成比你手写更多的代码。</p>
+<p>元编程对于减少大量编写和维护的代码是非常有用的，它也扮演了函数的角色。但宏有一些函数所没有的附加能力。</p>
+<p>一个函数标签必须声明函数参数个数和类型。而宏只接受一个可变参数：用一个参数调用 <code>println!(&quot;hello&quot;)</code> 或用两个参数调用 <code>println!(&quot;hello {}&quot;, name)</code> 。而且，宏可以在编译器翻译代码前展开，例如，宏可以在一个给定类型上实现 trait 。因为函数是在运行时被调用，同时 trait 需要在运行时实现，所以函数无法像宏这样。</p>
+<p>实现一个宏而不是函数的消极面是宏定义要比函数定义更复杂，因为你正在为写 Rust 代码而写代码。由于这样的间接性，宏定义通常要比函数定义更难阅读、理解以及维护。</p>
+<p>宏和函数的另一个区别是：宏定义无法像函数定义那样出现在模块命名空间中。当使用外部包（ external crate ）时，为了防止无法预料的名字冲突，在导入外部包的同时也必须明确地用 <code>#[macro_use]</code> 注解将宏导入到项目中。下面的例子将所有定义在 <code>serde</code> 包中的宏导入到当前包中：</p>
+<pre><code class="language-rust ignore">#[macro_use]
+extern crate serde;
+</code></pre>
+<p>如果 <code>extern crate</code> 能够将宏默认导入而无需使用明确的注解，则会阻止你使用同时定义相同宏名的两个包。在练习中，这样的冲突并不经常遇到，但使用的包越多，越有可能遇到。</p>
+<p>宏和函数最重要的区别是：在一个文件中，必须在调用宏<code>之前</code>定义或导入宏，然而却可以在任意地方定义或调用函数。</p>
+<a class="header" href="appendix-04-macros.html#a通用元编程的声明式宏-macro_rules" id="a通用元编程的声明式宏-macro_rules"><h3>通用元编程的声明式宏 <code>macro_rules!</code></h3></a>
+<p>在 Rust 中，最广泛使用的宏形式是 <em>declarative macros</em> 。通常也指 <em>macros by example</em> 、<em><code>macro_rules!</code> macros</em> 或简单的 <em>macros</em> 。在其核心中，声明式宏使你可以写一些和 Rust 的 <code>match</code> 表达式类似的代码。正如在第六章讨论的那样，<code>match</code> 表达式是控制结构，其接收一个表达式，与表达式的结果进行模式匹配，然后根据模式匹配执行相关代码。宏也将一个值和包含相关代码的模式进行比较；此种情况下，该值是 Rust 源代码传递给宏的常量，而模式则与源代码结构进行比较，同时每个模式的相关代码成为传递给宏的代码<!-- 这部分翻译自己不太满意-->。所有的这些都在编译时发生。</p>
+<p>可以使用 <code>macro_rules!</code> 来定义宏。让我们通过查看 <code>vec!</code> 宏定义来探索如何使用 <code>macro_rules!</code> 结构。第八章讲述了如何使用 <code>vec!</code> 宏来生成一个给定值的 vector。例如，下面的宏用三个整数创建一个 vector `：</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+let v: Vec&lt;u32&gt; = vec![1, 2, 3];
+#}</code></pre></pre>
+<p>也可以使用 <code>vec!</code> 宏来构造两个整数的 vector 或五个字符串切片的 vector 。但却无法使用函数做相同的事情，因为我们无法预先知道参数值的数量和类型。</p>
+<p>在示例 D-1 中来看一个 <code>vec!</code> 稍微简化的定义。</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+#[macro_export]
+macro_rules! vec {
+    ( $( $x:expr ),* ) =&gt; {
+        {
+            let mut temp_vec = Vec::new();
+            $(
+                temp_vec.push($x);
+            )*
+            temp_vec
+        }
+    };
+}
+#}</code></pre></pre>
+<p><span class="caption">示例 D-1: <code>vec!</code> 宏定义的一个简化版本</span></p>
+<blockquote>
+<p>注意：标准库中实际定义的 <code>vec!</code> 包括预分配适当量的内存。这部分为代码优化，为了让示例简化，此处并没有包含在内。</p>
+</blockquote>
+<p>无论何时导入定义了宏的包，<code>#[macro_export]</code> 注解说明宏应该是可用的。 如果没有 <code>#[macro_export]</code> 注解，即使凭借包使用 <code>#[macro_use]</code> 注解，该宏也不会导入进来，</p>
+<p>接着使用 <code>macro_rules!</code> 进行了宏定义，且所定义的宏并<em>不带</em>感叹号。名字后跟大括号表示宏定义体，在该例中是 <code>vec</code> 。</p>
+<p><code>vec!</code> 宏的结构和 <code>match</code> 表达式的结构类似。此处有一个单边模式 <code>( $( $x:expr ),* )</code> ，后跟 <code>=&gt;</code> 以及和模式相关的代码块。如果模式匹配，该相关代码块将被执行。假设这只是这个宏中的模式，且只有一个有效匹配，其他任何匹配都是错误的。更复杂的宏会有多个单边模式。<!-- 此处 arm, one arm 并未找到合适的翻译--></p>
+<p>宏定义中有效模式语法和在第十八章提及的模式语法是不同的，因为宏模式所匹配的是 Rust 代码结构而不是值。回过头来检查下示例 D-1 中模式片段什么意思。对于全部的宏模式语法，请查阅<a href="https://github.com/rust-lang/book/blob/master/reference/macros.html">参考</a>。</p>
+<p>首先，一对括号包含了全部模式。接下来是后跟一对括号的美元符号（ <code>$</code> ），其通过替代代码捕获了符合括号内模式的值。<code>$()</code> 内则是 <code>$x:expr</code> ，其匹配 Rust 的任意表达式或给定 <code>$x</code> 名字的表达式。</p>
+<p><code>$()</code> 之后的逗号说明一个逗号分隔符可以有选择的出现代码之后，这段代码与在 <code>$()</code> 中所捕获的代码相匹配。紧随逗号之后的 <code>*</code> 说明该模式匹配零个或多个 <code>*</code> 之前的任何模式。</p>
+<p>当以 <code>vec![1, 2, 3];</code> 调用宏时，<code>$x</code> 模式与三个表达式 <code>1</code>、<code>2</code> 和 <code>3</code> 进行了三次匹配。</p>
+<p>现在让我们来看看这个出现在与此单边模式相关的代码块中的模式：在 <code>$()*</code> 部分中所生成的 <code>temp_vec.push()</code> 为在匹配到模式中的 <code>$()</code> 每一部分而生成。<code>$x</code> 由每个与之相匹配的表达式所替换。当以 <code>vec![1, 2, 3];</code> 调用该宏时，替换该宏调用所生成的代码会是下面这样：</p>
+<pre><code class="language-rust ignore">let mut temp_vec = Vec::new();
+temp_vec.push(1);
+temp_vec.push(2);
+temp_vec.push(3);
+temp_vec
+</code></pre>
+<p>我们已经定义了一个宏，其可以接收任意数量和类型的参数，同时可以生成能够创建包含指定元素的 vector 的代码。</p>
+<p>鉴于大多数 Rust 程序员<em>使用</em>宏而不是<em>写</em>宏，此处不再深入探讨 <code>macro_rules!</code> 。请查阅在线文档或其他资源，如 <a href="https://danielkeep.github.io/tlborm/book/index.html">“The Little Book of Rust Macros”</a> 来更多地了解如何写宏。</p>
+<a class="header" href="appendix-04-macros.html#a自定义-derive-的过程式宏" id="a自定义-derive-的过程式宏"><h3>自定义 <code>derive</code> 的过程式宏</h3></a>
+<p>第二种形式的宏叫做<em>过程式宏</em>（ <em>procedural macros</em> ），因为它们更像函数（一种过程类型）。过程式宏接收 Rust 代码作为输入，在这些代码上进行操作，然后产生另一些代码作为输出，而非像声明式宏那样匹配对应模式然后以另一部分代码替换当前代码。在书写部分附录时，只能定义过程式宏来使你在一个通过 <code>derive</code> 注解来指定 trait 名的类型上实现 trait 。</p>
+<p>我们会创建一个 <code>hello_macro</code> 包，该包定义了一个关联到 <code>hello_macro</code> 函数并以 <code>HelloMacro</code> 为名的trait。并非让包的用户为其每一个类型实现<code>HelloMacro</code> trait，我们将会提供一个过程式宏以便用户可以使用 <code>#[derive(HelloMacro)]</code> 注解他们的类型来得到 <code>hello_macro</code> 函数的默认实现。该函数的默认实现会打印 <code>Hello, Macro! My name is TypeName!</code>，其中 <code>TypeName</code> 为定义了 trait 的类型名。换言之，我们会创建一个包，让使用该包的程序员能够写类似示例 D-2 中的代码。</p>
+<p><span class="filename">文件名: src/main.rs</span></p>
+<pre><code class="language-rust ignore">extern crate hello_macro;
+#[macro_use]
+extern crate hello_macro_derive;
+
+use hello_macro::HelloMacro;
+
+#[derive(HelloMacro)]
+struct Pancakes;
+
+fn main() {
+    Pancakes::hello_macro();
+}
+</code></pre>
+<p><span class="caption">示例 D-2: 包用户所写的能够使用过程式宏的代码</span></p>
+<p>运行该代码将会打印 <code>Hello, Macro! My name is Pancakes!</code> 第一步是像下面这样新建一个库：</p>
+<pre><code class="language-text">$ cargo new hello_macro --lib
+</code></pre>
+<p>接下来，会定义 <code>HelloMacro</code> trait 以及其关联函数：</p>
+<p><span class="filename">文件名: src/lib.rs</span></p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+pub trait HelloMacro {
+    fn hello_macro();
+}
+#}</code></pre></pre>
+<p>现在有了一个包含函数的 trait 。此时，包用户可以实现该 trait 以达到其期望的功能，像这样：</p>
+<pre><code class="language-rust ignore">extern crate hello_macro;
+
+use hello_macro::HelloMacro;
+
+struct Pancakes;
+
+impl HelloMacro for Pancakes {
+    fn hello_macro() {
+        println!(&quot;Hello, Macro! My name is Pancakes!&quot;);
+    }
+}
+
+fn main() {
+    Pancakes::hello_macro();
+}
+</code></pre>
+<p>然而，他们需要为每一个他们想使用 <code>hello_macro</code> 的类型编写实现的代码块。我们希望为其节约这些工作。</p>
+<p>另外，我们也无法为 <code>hello_macro</code> 函数提供一个能够打印实现了该 trait 的类型的名字的默认实现：Rust 没有反射的能力，因此其无法在运行时获取类型名。我们需要一个在运行时生成代码的宏。</p>
+<p>下一步是定义过程式宏。在编写该附录时，过程式宏必须在包内。该限制后面可能被取消。构造包和包中宏的惯例如下：对于一个 <code>foo</code> 的包来说，一个自定义的派生过程式宏的包被称为 <code>foo_derive</code> 。在 <code>hello_macro</code> 项目中新建名为 <code>hello_macro_derive</code> 的包。</p>
+<pre><code class="language-text">$ cargo new hello_macro_derive --lib
+</code></pre>
+<p>由于两个包紧密相关，因此在 <code>hello_macro</code> 包的目录下创建过程式宏的包。如果改变在 <code>hello_macro</code> 中定义的 trait ，同时也必须改变在 <code>hello_macro_derive</code> 中实现的过程式宏。这两个包需要分别发布，编程人员如果使用这些包，则需要同时添加这两个依赖并导入到代码中。我们也可以只用 <code>hello_macro</code> 包而将 <code>hello_macro_derive</code> 作为一个依赖，并重新导出过程式宏的代码。但我们组织项目的方式使编程人员使用 <code>hello_macro</code> 成为可能，即使他们无需 <code>derive</code> 的功能。</p>
+<p>需要将 <code>hello_macro_derive</code> 声明为一个过程式宏的包。同时也需要 <code>syn</code> 和 <code>quote</code> 包中的功能，正如注释中所说，需要将其加到依赖中。为 <code>hello_macro_derive</code> 将下面的代码加入到 <em>Cargo.toml</em> 文件中。</p>
+<p><span class="filename">文件名: hello_macro_derive/Cargo.toml</span></p>
+<pre><code class="language-toml">[lib]
+proc-macro = true
+
+[dependencies]
+syn = &quot;0.11.11&quot;
+quote = &quot;0.3.15&quot;
+</code></pre>
+<p>为定义一个过程式宏，请将示例 D-3 中的代码放在 <code>hello_macro_derive</code> 包的 <em>src/lib.rs</em> 文件里面。注意这段代码在我们添加 <code>impl_hello_macro</code> 函数的定义之前是无法编译的。</p>
+<p><span class="filename">文件名: hello_macro_derive/src/lib.rs</span></p>
+<pre><code class="language-rust ignore">extern crate proc_macro;
+extern crate syn;
+#[macro_use]
+extern crate quote;
+
+use proc_macro::TokenStream;
+
+#[proc_macro_derive(HelloMacro)]
+pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
+    // Construct a string representation of the type definition
+    let s = input.to_string();
+
+    // Parse the string representation
+    let ast = syn::parse_derive_input(&amp;s).unwrap();
+
+    // Build the impl
+    let gen = impl_hello_macro(&amp;ast);
+
+    // Return the generated impl
+    gen.parse().unwrap()
+}
+</code></pre>
+<p><span class="caption">示例 D-3: 大多数过程式宏处理 Rust 代码的代码</span></p>
+<p>注意在 D-3 中分离函数的方式，这将和你几乎所见到或创建的每一个过程式宏都一样，因为这让编写一个过程式宏更加方便。在 <code>impl_hello_macro</code> 被调用的地方所选择做的什么依赖于该过程式宏的目的而有所不同。</p>
+<p>现在，我们已经介绍了三个包：<code>proc_macro</code> 、 <a href="https://crates.io/crates/syn"><code>syn</code></a> 和 <a href="https://crates.io/crates/quote"><code>quote</code></a> 。Rust 自带 <code>proc_macro</code>  ，因此无需将其加到 <em>Cargo.toml</em> 文件的依赖中。<code>proc_macro</code> 可以将 Rust 代码转换为相应的字符串。<code>syn</code> 则将字符串中的 Rust 代码解析成为一个可以操作的数据结构。<code>quote</code> 则将 <code>syn</code> 解析的数据结构反过来传入到 Rust 代码中。这些包让解析我们所要处理的有序 Rust 代码变得更简单：为 Rust 编写整个的解析器并不是一件简单的工作。</p>
+<p>当用户在一个类型上指定 <code>#[derive(HelloMacro)]</code> 时，<code>hello_macro_derive</code>  函数将会被调用。
+原因在于我们已经使用 <code>proc_macro_derive</code> 及其指定名称对 <code>hello_macro_derive</code> 函数进行了注解：<code>HelloMacro</code> ，其匹配到 trait 名，这是大多数过程式宏的方便之处。</p>
+<p>该函数首先将来自 <code>TokenStream</code> 的 <code>输入</code> 转换为一个名为 <code>to_string</code> 的 <code>String</code> 类型。该 <code>String</code> 代表 派生 <code>HelloMacro</code> Rust 代码的字符串。在示例 D-2 的例子中，<code>s</code> 是 <code>String</code> 类型的 <code>struct Pancakes;</code> 值，这是因为我们加上了 <code>#[derive(HelloMacro)]</code> 注解。</p>
+<blockquote>
+<p>注意：编写本附录时，只可以将 <code>TokenStream</code> 转换为字符串，将来会提供更丰富的API。</p>
+</blockquote>
+<p>现在需要将 <code>String</code> 类型的 Rust 代码 解析为一个数据结构中，随后便可以与之交互并操作该数据结构。这正是 <code>syn</code> 所做的。<code>syn</code> 中的 <code>parse_derive_input</code> 函数以一个 <code>String</code> 作为参数并返回一个 表示解析出 Rust 代码的 <code>DeriveInput</code> 结构体。 下面的代码 展示了从字符串 <code>struct Pancakes;</code> 中解析出来的 <code>DeriveInput</code> 结构体的相关部分。</p>
+<pre><code class="language-rust ignore">DeriveInput {
+    // --snip--
+
+    ident: Ident(
+        &quot;Pancakes&quot;
+    ),
+    body: Struct(
+        Unit
+    )
+}
+</code></pre>
+<p>该结构体的字段展示了我们解析的 Rust 代码是一个元组结构体，其 <code>ident</code> （ identifier，表示名字）为 <code>Pancakes</code> 。该结构体里面有更多字段描述了所有有序 Rust 代码，查阅 <a href="https://docs.rs/syn/0.11.11/syn/struct.DeriveInput.html"><code>syn</code>
+documentation for <code>DeriveInput</code></a> 以获取更多信息。</p>
+<p>此时，尚未定义 <code>impl_hello_macro</code> 函数，其用于构建所要包含在内的 Rust 新代码。但在定义之前，要注意 <code>hello_macro_derive</code> 函数的最后一部分使用了 <code>quote</code> 包中的 <code>parse</code> 函数，该函数将 <code>impl_hello_macro</code> 的输出返回给 <code>TokenStream</code> 。所返回的 <code>TokenStream</code> 会被加到我们的包用户所写的代码中，因此，当用户编译他们的包时，他们会获取到我们所提供的额外功能。</p>
+<p>你也注意到，当调用 <code>parse_derive_input</code> 或 <code>parse</code> 失败时，我们调用 <code>unwrap</code> 来抛出异常。在过程式宏中，有必要错误上抛异常，因为 <code>proc_macro_derive</code> 函数必须返回 <code>TokenStream</code> 而不是 <code>Result</code> ，以此来符合过程式宏的 API 。我们已经选择用 <code>unwrap</code> 来简化了这个例子；在生产中的代码里，你应该通过 <code>panic!</code> 或 <code>expect</code> 来提供关于发生何种错误的更加明确的错误信息。</p>
+<p>现在我们有了将注解的 Rust 代码从 <code>TokenStream</code> 转换为 <code>String</code> 和 <code>DeriveInput</code> 实例的代码，让我们来创建在注解类型上实现 <code>HelloMacro</code> trait 的代码。</p>
+<p><span class="filename">文件名: hello_macro_derive/src/lib.rs</span></p>
+<pre><code class="language-rust ignore">fn impl_hello_macro(ast: &amp;syn::DeriveInput) -&gt; quote::Tokens {
+    let name = &amp;ast.ident;
+    quote! {
+        impl HelloMacro for #name {
+            fn hello_macro() {
+                println!(&quot;Hello, Macro! My name is {}&quot;, stringify!(#name));
+            }
+        }
+    }
+}
+</code></pre>
+<p>我们得到一个包含以 <code>ast.ident</code> 作为注解类型名字（标识符）的 <code>Ident</code> 结构体实例。示例 D-2 中的代码说明 <code>name</code> 会是 <code>Ident(&quot;Pancakes&quot;)</code> 。</p>
+<p><code>quote!</code> 宏让我们编写我们想要返回的代码，并可以将其传入进 <code>quote::Tokens</code> 。这个宏也提供了一些非常酷的模板机制；我们可以写 <code>#name</code> ，然后 <code>quote!</code> 会以 名为 <code>name</code> 的变量值来替换它。你甚至可以做些与这个正则宏任务类似的重复事情。查阅 <a href="https://docs.rs/quote">the <code>quote</code> crate’s
+docs</a> 来获取详尽的介绍。</p>
+<p>我们期望我们的过程式宏能够为通过 <code>#name</code> 获取到的用户注解类型生成 <code>HelloMacro</code> trait 的实现。该 trait 的实现有一个函数 <code>hello_macro</code> ，其函数体包括了我们期望提供的功能：打印 <code>Hello, Macro! My name is</code> 和注解的类型名。</p>
+<p>此处所使用的 <code>stringify!</code> 为 Rust 内置宏。其接收一个 Rust 表达式，如 <code>1 + 2</code> ， 然后在编译时将表达式转换为一个字符串常量，如 <code>&quot;1 + 2&quot;</code> 。这与 <code>format!</code> 或 <code>println!</code> 是不同的，它计算表达式并将结果转换为 <code>String</code> 。有一种可能的情况是，所输入的 <code>#name</code> 可能是一个需要打印的表达式，因此我们用 <code>stringify!</code> 。 <code>stringify!</code> 编译时也保留了一份将 <code>#name</code> 转换为字符串之后的内存分配。</p>
+<p>此时，<code>cargo build</code> 应该都能成功编译 <code>hello_macro</code> 和 <code>hello_macro_derive</code> 。我们将这些 crate 连接到示例 D-2 的代码中来看看过程式宏的行为。在 <em>projects</em> 目录下用 <code>cargo new pancakes</code> 命令新建一个二进制项目。需要将 <code>hello_macro</code> 和 <code>hello_macro_derive</code> 作为依赖加到 <code>pancakes</code> 包的 <em>Cargo.toml</em>  文件中去。如果你正将 <code>hello_macro</code> 和 <code>hello_macro_derive</code> 的版本发布到 <a href="https://crates.io/"><em>https://crates.io/</em></a> 上，其应为正规依赖；如果不是，则可以像下面这样将其指定为 <code>path</code> 依赖：</p>
+<pre><code class="language-toml">[dependencies]
+hello_macro = { path = &quot;../hello_macro&quot; }
+hello_macro_derive = { path = &quot;../hello_macro/hello_macro_derive&quot; }
+</code></pre>
+<p>把示例 D-2 中的代码放在 <em>src/main.rs</em> ，然后执行 <code>cargo run</code> ： 其应该打印 <code>Hello, Macro! My name is Pancakes!</code> 。从过程式宏中实现的 <code>HelloMacro</code> trait 被包括在内，但并不包含 <code>pancakes</code> 的包，需要实现它。<code>#[derive(HelloMacro)]</code> 添加了该 trait 的实现。<!-- 中间句子翻译不是太好 --></p>
+<a class="header" href="appendix-04-macros.html#a宏的前景" id="a宏的前景"><h3>宏的前景</h3></a>
+<p>在将来，Rust 仍会扩展声明式宏和过程式宏。Rust会通过 <code>macro</code> 使用一个更好的声明式宏系统，以及为较之 <code>derive</code> 的更强大的任务增加更多的过程式宏类型。在本书出版时，这些系统仍然在开发中，请查阅 Rust 在线文档以获取最新信息。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="appendix-03-derivable-traits.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="appendix-05-translation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="appendix-03-derivable-traits.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="appendix-05-translation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+
+        
+        <script src="searchindex.js" type="text/javascript" charset="utf-8"></script>
+        
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+    </body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>什么是所有权？ - Rust 程序设计语言 简体中文版</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Rust 程序设计语言 简体中文版">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="_FontAwesome/css/font-awesome.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+
+    </head>
+    <body class="light">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="affix"><a href="foreword.html">前言</a></li><li class="affix"><a href="ch00-00-introduction.html">介绍</a></li><li><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> 入门指南</a></li><li><ol class="section"><li><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> 安装</a></li><li><a href="ch01-02-hello-world.html"><strong aria-hidden="true">1.2.</strong> Hello, World!</a></li><li><a href="ch01-03-hello-cargo.html"><strong aria-hidden="true">1.3.</strong> Hello, Cargo!</a></li></ol></li><li><a href="ch02-00-guessing-game-tutorial.html"><strong aria-hidden="true">2.</strong> 猜猜看游戏教程</a></li><li><a href="ch03-00-common-programming-concepts.html"><strong aria-hidden="true">3.</strong> 通用编程概念</a></li><li><ol class="section"><li><a href="ch03-01-variables-and-mutability.html"><strong aria-hidden="true">3.1.</strong> 变量与可变性</a></li><li><a href="ch03-02-data-types.html"><strong aria-hidden="true">3.2.</strong> 数据类型</a></li><li><a href="ch03-03-how-functions-work.html"><strong aria-hidden="true">3.3.</strong> 函数如何工作</a></li><li><a href="ch03-04-comments.html"><strong aria-hidden="true">3.4.</strong> 注释</a></li><li><a href="ch03-05-control-flow.html"><strong aria-hidden="true">3.5.</strong> 控制流</a></li></ol></li><li><a href="ch04-00-understanding-ownership.html"><strong aria-hidden="true">4.</strong> 认识所有权</a></li><li><ol class="section"><li><a href="ch04-01-what-is-ownership.html" class="active"><strong aria-hidden="true">4.1.</strong> 什么是所有权？</a></li><li><a href="ch04-02-references-and-borrowing.html"><strong aria-hidden="true">4.2.</strong> 引用与借用</a></li><li><a href="ch04-03-slices.html"><strong aria-hidden="true">4.3.</strong> Slices</a></li></ol></li><li><a href="ch05-00-structs.html"><strong aria-hidden="true">5.</strong> 使用结构体来组织相关联的数据</a></li><li><ol class="section"><li><a href="ch05-01-defining-structs.html"><strong aria-hidden="true">5.1.</strong> 定义并实例化结构体</a></li><li><a href="ch05-02-example-structs.html"><strong aria-hidden="true">5.2.</strong> 一个使用结构体的示例程序</a></li><li><a href="ch05-03-method-syntax.html"><strong aria-hidden="true">5.3.</strong> 方法语法</a></li></ol></li><li><a href="ch06-00-enums.html"><strong aria-hidden="true">6.</strong> 枚举与模式匹配</a></li><li><ol class="section"><li><a href="ch06-01-defining-an-enum.html"><strong aria-hidden="true">6.1.</strong> 定义枚举</a></li><li><a href="ch06-02-match.html"><strong aria-hidden="true">6.2.</strong> match 控制流运算符</a></li><li><a href="ch06-03-if-let.html"><strong aria-hidden="true">6.3.</strong> if let 简洁控制流</a></li></ol></li><li><a href="ch07-00-modules.html"><strong aria-hidden="true">7.</strong> 模块</a></li><li><ol class="section"><li><a href="ch07-01-mod-and-the-filesystem.html"><strong aria-hidden="true">7.1.</strong> mod 与文件系统</a></li><li><a href="ch07-02-controlling-visibility-with-pub.html"><strong aria-hidden="true">7.2.</strong> 使用 pub 控制可见性</a></li><li><a href="ch07-03-importing-names-with-use.html"><strong aria-hidden="true">7.3.</strong> 在不同的模块中引用命名</a></li></ol></li><li><a href="ch08-00-common-collections.html"><strong aria-hidden="true">8.</strong> 通用集合类型</a></li><li><ol class="section"><li><a href="ch08-01-vectors.html"><strong aria-hidden="true">8.1.</strong> vector</a></li><li><a href="ch08-02-strings.html"><strong aria-hidden="true">8.2.</strong> 字符串</a></li><li><a href="ch08-03-hash-maps.html"><strong aria-hidden="true">8.3.</strong> 哈希 map</a></li></ol></li><li><a href="ch09-00-error-handling.html"><strong aria-hidden="true">9.</strong> 错误处理</a></li><li><ol class="section"><li><a href="ch09-01-unrecoverable-errors-with-panic.html"><strong aria-hidden="true">9.1.</strong> panic! 与不可恢复的错误</a></li><li><a href="ch09-02-recoverable-errors-with-result.html"><strong aria-hidden="true">9.2.</strong> Result 与可恢复的错误</a></li><li><a href="ch09-03-to-panic-or-not-to-panic.html"><strong aria-hidden="true">9.3.</strong> panic! 还是不 panic!</a></li></ol></li><li><a href="ch10-00-generics.html"><strong aria-hidden="true">10.</strong> 泛型、trait 与生命周期</a></li><li><ol class="section"><li><a href="ch10-01-syntax.html"><strong aria-hidden="true">10.1.</strong> 泛型数据类型</a></li><li><a href="ch10-02-traits.html"><strong aria-hidden="true">10.2.</strong> trait：定义共享的行为</a></li><li><a href="ch10-03-lifetime-syntax.html"><strong aria-hidden="true">10.3.</strong> 生命周期与引用有效性</a></li></ol></li><li><a href="ch11-00-testing.html"><strong aria-hidden="true">11.</strong> 测试</a></li><li><ol class="section"><li><a href="ch11-01-writing-tests.html"><strong aria-hidden="true">11.1.</strong> 编写测试</a></li><li><a href="ch11-02-running-tests.html"><strong aria-hidden="true">11.2.</strong> 运行测试</a></li><li><a href="ch11-03-test-organization.html"><strong aria-hidden="true">11.3.</strong> 测试的组织结构</a></li></ol></li><li><a href="ch12-00-an-io-project.html"><strong aria-hidden="true">12.</strong> 一个 I/O 项目：构建命令行程序</a></li><li><ol class="section"><li><a href="ch12-01-accepting-command-line-arguments.html"><strong aria-hidden="true">12.1.</strong> 接受命令行参数</a></li><li><a href="ch12-02-reading-a-file.html"><strong aria-hidden="true">12.2.</strong> 读取文件</a></li><li><a href="ch12-03-improving-error-handling-and-modularity.html"><strong aria-hidden="true">12.3.</strong> 重构以改进模块化与错误处理</a></li><li><a href="ch12-04-testing-the-librarys-functionality.html"><strong aria-hidden="true">12.4.</strong> 采用测试驱动开发完善库的功能</a></li><li><a href="ch12-05-working-with-environment-variables.html"><strong aria-hidden="true">12.5.</strong> 处理环境变量</a></li><li><a href="ch12-06-writing-to-stderr-instead-of-stdout.html"><strong aria-hidden="true">12.6.</strong> 将错误信息输出到标准错误而不是标准输出</a></li></ol></li><li><a href="ch13-00-functional-features.html"><strong aria-hidden="true">13.</strong> Rust 中的函数式语言功能：迭代器与闭包</a></li><li><ol class="section"><li><a href="ch13-01-closures.html"><strong aria-hidden="true">13.1.</strong> 闭包：可以捕获其环境的匿名函数</a></li><li><a href="ch13-02-iterators.html"><strong aria-hidden="true">13.2.</strong> 使用迭代器处理元素序列</a></li><li><a href="ch13-03-improving-our-io-project.html"><strong aria-hidden="true">13.3.</strong> 改进之前的 I/O 项目</a></li><li><a href="ch13-04-performance.html"><strong aria-hidden="true">13.4.</strong> 性能比较：循环对迭代器</a></li></ol></li><li><a href="ch14-00-more-about-cargo.html"><strong aria-hidden="true">14.</strong> 更多关于 Cargo 和 Crates.io 的内容</a></li><li><ol class="section"><li><a href="ch14-01-release-profiles.html"><strong aria-hidden="true">14.1.</strong> 采用发布配置自定义构建</a></li><li><a href="ch14-02-publishing-to-crates-io.html"><strong aria-hidden="true">14.2.</strong> 将 crate 发布到 Crates.io</a></li><li><a href="ch14-03-cargo-workspaces.html"><strong aria-hidden="true">14.3.</strong> Cargo 工作空间</a></li><li><a href="ch14-04-installing-binaries.html"><strong aria-hidden="true">14.4.</strong> 使用 cargo install 从 Crates.io 安装二进制文件</a></li><li><a href="ch14-05-extending-cargo.html"><strong aria-hidden="true">14.5.</strong> Cargo 自定义扩展命令</a></li></ol></li><li><a href="ch15-00-smart-pointers.html"><strong aria-hidden="true">15.</strong> 智能指针</a></li><li><ol class="section"><li><a href="ch15-01-box.html"><strong aria-hidden="true">15.1.</strong> Box<T> 指向堆上数据，并且可确定大小</a></li><li><a href="ch15-02-deref.html"><strong aria-hidden="true">15.2.</strong> 通过 Deref trait 将智能指针当作常规引用处理</a></li><li><a href="ch15-03-drop.html"><strong aria-hidden="true">15.3.</strong> Drop Trait 运行清理代码</a></li><li><a href="ch15-04-rc.html"><strong aria-hidden="true">15.4.</strong> Rc<T> 引用计数智能指针</a></li><li><a href="ch15-05-interior-mutability.html"><strong aria-hidden="true">15.5.</strong> RefCell<T> 与内部可变性模式</a></li><li><a href="ch15-06-reference-cycles.html"><strong aria-hidden="true">15.6.</strong> 引用循环与内存泄漏是安全的</a></li></ol></li><li><a href="ch16-00-concurrency.html"><strong aria-hidden="true">16.</strong> 无畏并发</a></li><li><ol class="section"><li><a href="ch16-01-threads.html"><strong aria-hidden="true">16.1.</strong> 线程</a></li><li><a href="ch16-02-message-passing.html"><strong aria-hidden="true">16.2.</strong> 消息传递</a></li><li><a href="ch16-03-shared-state.html"><strong aria-hidden="true">16.3.</strong> 共享状态</a></li><li><a href="ch16-04-extensible-concurrency-sync-and-send.html"><strong aria-hidden="true">16.4.</strong> 可扩展的并发：Sync 与 Send</a></li></ol></li><li><a href="ch17-00-oop.html"><strong aria-hidden="true">17.</strong> Rust 的面向对象编程特性</a></li><li><ol class="section"><li><a href="ch17-01-what-is-oo.html"><strong aria-hidden="true">17.1.</strong> 面向对象语言的特点</a></li><li><a href="ch17-02-trait-objects.html"><strong aria-hidden="true">17.2.</strong> 为使用不同类型的值而设计的 trait 对象</a></li><li><a href="ch17-03-oo-design-patterns.html"><strong aria-hidden="true">17.3.</strong> 面向对象设计模式的实现</a></li></ol></li><li><a href="ch18-00-patterns.html"><strong aria-hidden="true">18.</strong> 模式用来匹配值的结构</a></li><li><ol class="section"><li><a href="ch18-01-all-the-places-for-patterns.html"><strong aria-hidden="true">18.1.</strong> 所有可能会用到模式的位置</a></li><li><a href="ch18-02-refutability.html"><strong aria-hidden="true">18.2.</strong> Refutability：何时模式可能会匹配失败</a></li><li><a href="ch18-03-pattern-syntax.html"><strong aria-hidden="true">18.3.</strong> 模式的全部语法</a></li></ol></li><li><a href="ch19-00-advanced-features.html"><strong aria-hidden="true">19.</strong> 高级特征</a></li><li><ol class="section"><li><a href="ch19-01-unsafe-rust.html"><strong aria-hidden="true">19.1.</strong> 不安全的 Rust</a></li><li><a href="ch19-02-advanced-lifetimes.html"><strong aria-hidden="true">19.2.</strong> 高级生命周期</a></li><li><a href="ch19-03-advanced-traits.html"><strong aria-hidden="true">19.3.</strong> 高级 trait</a></li><li><a href="ch19-04-advanced-types.html"><strong aria-hidden="true">19.4.</strong> 高级类型</a></li><li><a href="ch19-05-advanced-functions-and-closures.html"><strong aria-hidden="true">19.5.</strong> 高级函数与闭包</a></li></ol></li><li><a href="ch20-00-final-project-a-web-server.html"><strong aria-hidden="true">20.</strong> 最后的项目: 构建多线程 web server</a></li><li><ol class="section"><li><a href="ch20-01-single-threaded.html"><strong aria-hidden="true">20.1.</strong> 单线程 web server</a></li><li><a href="ch20-02-multithreaded.html"><strong aria-hidden="true">20.2.</strong> 将单线程 server 变为多线程 server</a></li><li><a href="ch20-03-graceful-shutdown-and-cleanup.html"><strong aria-hidden="true">20.3.</strong> 优雅停机与清理</a></li></ol></li><li><a href="appendix-00.html"><strong aria-hidden="true">21.</strong> 附录</a></li><li><ol class="section"><li><a href="appendix-01-keywords.html"><strong aria-hidden="true">21.1.</strong> A - 关键字</a></li><li><a href="appendix-02-operators.html"><strong aria-hidden="true">21.2.</strong> B - 运算符与符号</a></li><li><a href="appendix-03-derivable-traits.html"><strong aria-hidden="true">21.3.</strong> C - 可派生的 trait</a></li><li><a href="appendix-04-macros.html"><strong aria-hidden="true">21.4.</strong> D - 宏</a></li><li><a href="appendix-05-translation.html"><strong aria-hidden="true">21.5.</strong> E - 本书翻译</a></li><li><a href="appendix-06-newest-features.html"><strong aria-hidden="true">21.6.</strong> F - 最新功能</a></li><li><a href="appendix-07-nightly-rust.html"><strong aria-hidden="true">21.7.</strong> G - Rust 是如何开发的与 “Nightly Rust”</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Rust 程序设计语言 简体中文版</h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="ch04-01-what-is-ownership.html#a什么是所有权" id="a什么是所有权"><h2>什么是所有权</h2></a>
+<blockquote>
+<p><a href="https://github.com/rust-lang/book/blob/master/second-edition/src/ch04-01-what-is-ownership.md">ch04-01-what-is-ownership.md</a>
+<br>
+commit ec65990849230388e4ce4db5b7a0cb8a0f0d60e2</p>
+</blockquote>
+<p>Rust 的核心功能（之一）是 <strong>所有权</strong>（<em>ownership</em>）。虽然该功能很容易解释，但它对语言的其他部分有深刻的影响。</p>
+<p>所有程序都必须管理其运行时使用计算机内存的方式。一些语言中使用垃圾回收在程序运行过程中来时刻寻找不再被使用的内存；在另一些语言中，程序员必须亲自分配和释放内存。Rust 则选择了第三种方式：内存被一个所有权系统管理，它拥有一系列的规则使编译器在编译时进行检查。任何所有权系统的功能都不会导致运行时开销。</p>
+<p>因为所有权对很多程序员来说都是一个新概念，需要一些时间来适应。好消息是随着你对 Rust 和所有权系统的规则越来越有经验，你就越能自然地编写出安全和高效的代码。持之以恒！</p>
+<p>当你理解了所有权，你将有一个坚实的基础来理解使Rust独特的功能。在本章中，你将通过一些常见数据结构的例子来学习所有权：字符串。</p>
+<!-- PROD: START BOX -->
+<blockquote>
+<a class="header" href="ch04-01-what-is-ownership.html#a栈stack与堆heap" id="a栈stack与堆heap"><h3>栈（Stack）与堆（Heap）</h3></a>
+<p>在很多语言中并不经常需要考虑到栈与堆。不过在像 Rust 这样的系统编程语言中，值是位于栈上还是堆上在更大程度上影响了语言的行为以及为何必须做出这样的选择。我们会在本章的稍后部分描述所有权与堆与栈相关的部分，所以这里只是一个用来预热的简要解释。</p>
+<p>栈和堆都是代码在运行时可供使用的内存部分，不过他们以不同的结构组成。栈以放入值的顺序存储并以相反顺序取出值。这也被称作 <strong>后进先出</strong>（<em>last in, first out</em>）。想象一下一叠盘子：当增加更多盘子时，把他们放在盘子堆的顶部，当需要盘子时，也从顶部拿走。不能从中间也不能从底部增加或拿走盘子！增加数据叫做 <strong>进栈</strong>（<em>pushing onto the stack</em>），而移出数据叫做 <strong>出栈</strong>（<em>popping off the stack</em>）。</p>
+<p>栈的操作是十分快速的，这主要是得益于它存取数据的方式：因为数据存取的位置总是在栈顶而不需要寻找一个位置存放或读取数据。另一个栈的属性也让操作栈中数据快速，是因为栈中的所有数据都必须有一个已知且固定的大小。</p>
+<p>相反对于在编译时未知大小或大小可能变化的数据，可以把他们储存在堆上。堆是缺乏组织的：当向堆放入数据时，我们请求一定大小的空间。操作系统在堆的某处找到一块足够大的空位，把它标记为已使用，并返回给我们一个其位置的 <strong>指针</strong>（<em>pointer</em>）。这个过程称作 <strong>在堆上分配内存</strong>（<em>allocating on the heap</em>），并且有时这个过程就简称为 “分配”（allocating）。向栈中放入数据并不被认为是分配。因为指针是已知的固定大小的，我们可以将指针储存在栈上，不过当需要实际数据时，必须访问指针。</p>
+<p>想象一下去餐馆就坐吃饭。当进入时，你说明有几个人，餐馆员工会找到一个够大的空桌子并领你们过去。如果有人来迟了，他们也可以通过询问来找到你们坐在哪。</p>
+<p>访问堆上的数据要比访问栈上的数据要慢因为必须通过指针来访问。现代处理器在内存中跳转越少就越快（缓存）。继续类比，假设有一个服务员在餐厅里处理多个桌子的点菜。在一个桌子报完所有菜后再移动到下一个桌子是最有效率的。从桌子 A 听一个菜，接着桌子 B 听一个菜，然后再桌子 A，然后再桌子 B 这样的流程会更加缓慢。出于同样原因，处理器在处理的数据之间彼此较近的时候（比如在栈上）比较远的时候（比如可能在堆上）能更好的工作。在堆上分配大量的空间也可能消耗时间。</p>
+<p>当调用一个函数，传递给函数的值（包括可能指向堆上数据的指针）和函数的局部变量被压入栈中。当函数结束时，这些值被移出栈。</p>
+<p>记录何处的代码在使用堆上的什么数据，最小化堆上的冗余数据的数量以及清理堆上不再使用的数据以致不至于耗尽空间，这些所有的问题正是所有权系统要处理的。一旦理解了所有权，你就不需要经常考虑栈和堆了，不过理解如何管理堆内存可以帮助我们理解所有权为何存在以及为什么要以这种方式工作。</p>
+</blockquote>
+<!-- PROD: END BOX -->
+<a class="header" href="ch04-01-what-is-ownership.html#a所有权规则" id="a所有权规则"><h3>所有权规则</h3></a>
+<p>首先，让我们看一下所有权的规则。请记住它们，我们将讲解一些它们的例子：</p>
+<blockquote>
+<ol>
+<li>Rust 中每一个值都有一个称之为其 <strong>所有者</strong>（<em>owner</em>）的变量。</li>
+<li>值有且只能有一个所有者。</li>
+<li>当所有者（变量）离开作用域，这个值将被丢弃。</li>
+</ol>
+</blockquote>
+<a class="header" href="ch04-01-what-is-ownership.html#a变量作用域" id="a变量作用域"><h3>变量作用域</h3></a>
+<p>我们已经在第二章完成过一个 Rust 程序的例子。现在我们已经掌握了基本语法，所以不会在之后的例子中包含 <code>fn main() {</code> 代码了，所以如果你是一路跟过来的，必须手动将之后例子的代码放入一个 <code>main</code> 函数中。为此，例子将显得更加简明，使我们可以关注具体细节而不是样板代码。</p>
+<p>作为所有权的第一个例子，我们看看一些变量的 <strong>作用域</strong>（<em>scope</em>）。作用域是一个项(原文：item) 在程序中有效的范围。假设有这样一个变量：</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+let s = &quot;hello&quot;;
+#}</code></pre></pre>
+<p>变量 <code>s</code> 绑定到了一个字符串字面值，这个字符串值是硬编码进程序代码中的。这个变量从声明的点开始直到当前 <strong>作用域</strong> 结束时都是有效的。示例 4-1 的注释标明了变量 <code>s</code> 在何处是有效的：</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+{                      // s is not valid here, it’s not yet declared
+    let s = &quot;hello&quot;;   // s is valid from this point forward
+
+    // do stuff with s
+}                      // this scope is now over, and s is no longer valid
+#}</code></pre></pre>
+<p><span class="caption">示例 4-1：一个变量和其有效的作用域</span></p>
+<p>换句话说，这里有两个重要的点：</p>
+<ol>
+<li>当 <code>s</code> <strong>进入作用域</strong> 时，它就是有效的。</li>
+<li>这一直持续到它 <strong>离开作用域</strong> 为止。</li>
+</ol>
+<p>目前为止，变量是否有效与作用域的关系跟其他编程语言是类似的。现在我们在此基础上介绍 <code>String</code> 类型。</p>
+<a class="header" href="ch04-01-what-is-ownership.html#string-类型" id="string-类型"><h3><code>String</code> 类型</h3></a>
+<p>为了演示所有权的规则，我们需要一个比第三章讲到的任何一个都要复杂的数据类型。“Data Types” 部分涉及到的数据类型都是储存在栈上的并且当离开作用域时被移出栈，不过我们需要寻找一个储存在堆上的数据来探索 Rust 是如何知道该在何时清理数据的。</p>
+<p>这里使用 <code>String</code> 作为例子并专注于 <code>String</code> 与所有权相关的部分。这些方面也同样适用于其他标准库提供的或你自己创建的复杂数据类型。在第八章会更深入地讲解 <code>String</code>。</p>
+<p>我们已经见过字符串字面值了，它被硬编码进程序里。字符串字面值是很方便的，不过他们并不总是适合所有需要使用文本的场景。原因之一就是他们是不可变的。另一个原因是不是所有字符串的值都能在编写代码时就知道：例如，如果想要获取用户输入并储存该怎么办呢？为此，Rust 有第二个字符串类型，<code>String</code>。这个类型储存在堆上所以能够储存在编译时未知大小的文本。可以用 <code>from</code> 函数从字符串字面值来创建 <code>String</code>，如下：</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+let s = String::from(&quot;hello&quot;);
+#}</code></pre></pre>
+<p>这两个冒号（<code>::</code>）运算符允许将特定的 <code>from</code> 函数置于 <code>String</code> 类型的命名空间（namespace）下而不需要使用类似 <code>string_from</code> 这样的名字。在第五章的 “方法语法”（“Method Syntax”）部分会着重讲解这个语法而且在第七章会讲到模块的命名空间。</p>
+<p>这类字符串 <strong>可以</strong> 被修改：</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+let mut s = String::from(&quot;hello&quot;);
+
+s.push_str(&quot;, world!&quot;); // push_str() appends a literal to a String
+
+println!(&quot;{}&quot;, s); // This will print `hello, world!`
+#}</code></pre></pre>
+<p>那么这里有什么区别呢？为什么 <code>String</code> 可变而字面值却不行呢？区别在于两个类型对内存的处理上。</p>
+<a class="header" href="ch04-01-what-is-ownership.html#a内存与分配" id="a内存与分配"><h3>内存与分配</h3></a>
+<p>对于字符串字面值的情况，我们在编译时就知道其内容所以它直接被硬编码进最终的可执行文件中，这使得字符串字面值快速且高效。不过这些属性都只来源于其不可变性。不幸的是，我们不能为了每一个在编译时未知大小的文本而将一块内存放入二进制文件中而它的大小还可能随着程序运行而改变。</p>
+<p>对于 <code>String</code> 类型，为了支持一个可变，可增长的文本片段，需要在堆上分配一块在编译时未知大小的内存来存放内容。这意味着：</p>
+<ol>
+<li>内存必须在运行时向操作系统请求。</li>
+<li>需要一个当我们处理完 <code>String</code> 时将内存返回给操作系统的方法。</li>
+</ol>
+<p>第一部分由我们完成：当调用 <code>String::from</code> 时，它的实现 (<em>implementation</em>) 请求其所需的内存。这在编程语言中是非常通用的。</p>
+<p>然而，第二部分实现起来就各有区别了。在有 <strong>垃圾回收</strong>（<em>garbage collector</em>，<em>GC</em>）的语言中， GC 记录并清除不再使用的内存，而我们作为程序员，并不需要关心他们。没有 GC 的话，识别出不再使用的内存并调用代码显式释放就是我们程序员的责任了，正如请求内存的时候一样。从历史的角度上说正确处理内存回收曾经是一个困难的编程问题。如果忘记回收了会浪费内存。如果过早回收了，将会出现无效变量。如果重复回收，这也是个 bug。我们需要 <code>allocate</code> 和 <code>free</code> 一一对应。</p>
+<p>Rust 采取了一个不同的策略：内存在拥有它的变量离开作用域后就被自动释放。下面是示例 4-1 中作用域例子的一个使用 <code>String</code> 而不是字符串字面值的版本：</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+{
+    let s = String::from(&quot;hello&quot;); // s is valid from this point forward
+
+    // do stuff with s
+}                                  // this scope is now over, and s is no
+                                   // longer valid
+#}</code></pre></pre>
+<p>这里是一个将 <code>String</code> 需要的内存返回给操作系统的很自然的位置：当 <code>s</code> 离开作用域的时候。当变量离开作用域，Rust 为其调用一个特殊的函数。这个函数叫做 <code>drop</code>，在这里 <code>String</code> 的作者可以放置释放内存的代码。Rust 在结尾的 <code>}</code> 处自动调用 <code>drop</code>。</p>
+<blockquote>
+<p>注意：在 C++ 中，这种 item 在生命周期结束时释放资源的方法有时被称作 <strong>资源获取即初始化</strong>（<em>Resource Acquisition Is Initialization (RAII)</em>）。如果你使用过 RAII 模式的话应该对 Rust 的 <code>drop</code> 函数并不陌生。</p>
+</blockquote>
+<p>这个模式对编写 Rust 代码的方式有着深远的影响。现在它看起来很简单，不过在更复杂的场景下代码的行为可能是不可预测的，比如当有多个变量使用在堆上分配的内存时。现在让我们探索一些这样的场景。</p>
+<a class="header" href="ch04-01-what-is-ownership.html#a变量与数据交互的方式一移动" id="a变量与数据交互的方式一移动"><h4>变量与数据交互的方式（一）：移动</h4></a>
+<p>Rust 中的多个变量可以采用一种独特的方式与同一数据交互。让我们看看示例 4-2 中一个使用整型的例子：</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+let x = 5;
+let y = x;
+#}</code></pre></pre>
+<p><span class="caption">示例 4-2：将变量 <code>x</code> 赋值给 <code>y</code></span></p>
+<p>根据其他语言的经验我们大致可以猜到这在干什么：“将 <code>5</code> 绑定到 <code>x</code>；接着生成一个值 <code>x</code> 的拷贝并绑定到 <code>y</code>”。现在有了两个变量，<code>x</code> 和 <code>y</code>，都等于 <code>5</code>。这也正是事实上发生了的，因为正数是有已知固定大小的简单值，所以这两个 <code>5</code> 被放入了栈中。</p>
+<p>现在看看这个 <code>String</code> 版本：</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+let s1 = String::from(&quot;hello&quot;);
+let s2 = s1;
+#}</code></pre></pre>
+<p>这看起来与上面的代码非常类似，所以我们可能会假设他们的运行方式也是类似的：也就是说，第二行可能会生成一个 <code>s1</code> 的拷贝并绑定到 <code>s2</code> 上。不过，事实上并不完全是这样。</p>
+<p>为了更全面的解释这个问题，让我们看看图 4-1 中 <code>String</code> 真正是什么样的。<code>String</code> 由三部分组成，如图左侧所示：一个指向存放字符串内容内存的指针，一个长度，和一个容量。这一组数据储存在栈上。右侧则是堆上存放内容的内存部分。</p>
+<p><img alt="String in memory" src="img/trpl04-01.svg" class="center" style="width: 50%;" /></p>
+<p><span class="caption">图 4-1：一个绑定到 <code>s1</code> 的拥有值 <code>&quot;hello&quot;</code> 的 <code>String</code> 的内存表现</span></p>
+<p>长度代表当前 <code>String</code> 的内容使用了多少字节的内存。容量是 <code>String</code> 从操作系统总共获取了多少字节的内存。长度与容量的区别是很重要的，不过这在目前为止的场景中并不重要，所以可以暂时忽略容量。</p>
+<p>当我们把 <code>s1</code> 赋值给 <code>s2</code>，<code>String</code> 的数据被复制了，这意味着我们从栈上拷贝了它的指针、长度和容量。我们并没有复制堆上指针所指向的数据。换句话说，内存中数据的表现如图 4-2 所示。</p>
+<p><img alt="s1 and s2 pointing to the same value" src="img/trpl04-02.svg" class="center" style="width: 50%;" /></p>
+<p><span class="caption">图 4-2：变量 <code>s2</code> 的内存表现，它有一份 <code>s1</code> 指针、长度和容量的拷贝</span></p>
+<p>这个表现形式看起来 <strong>并不像</strong> 图 4-3 中的那样，但是如果 Rust 也拷贝了堆上的数据后内存看起来会是如何呢。如果 Rust 这么做了，那么操作 <code>s2 = s1</code> 在堆上数据比较大的时候可能会对运行时性能造成非常大的影响。</p>
+<p><img alt="s1 and s2 to two places" src="img/trpl04-03.svg" class="center" style="width: 50%;" /></p>
+<p><span class="caption">图 4-3：另一个 <code>s2 = s1</code> 时可能的内存表现，如果 Rust 同时也拷贝了堆上的数据的话</span></p>
+<p>之前，我们提到过当变量离开作用域后 Rust 自动调用 <code>drop</code> 函数并清理变量的堆内存。不过图 4-4 展示了两个数据指针指向了同一位置。这就有了一个问题：当 <code>s2</code> 和 <code>s1</code> 离开作用域，他们都会尝试释放相同的内存。这是一个叫做 <strong>二次释放</strong>（<em>double free</em>）的错误，也是之前提到过的内存安全性 bug 之一。两次释放（相同）内存会导致内存污染，它可能会导致潜在的安全漏洞。</p>
+<p>为了确保内存安全，这种场景下 Rust 的处理有另一个细节值得注意。与其尝试拷贝被分配的内存，Rust 则认为 <code>s1</code> 不再有效，因此 Rust 不需要在 <code>s1</code> 离开作用域后清理任何东西。看看在 <code>s2</code> 被创建之后尝试使用 <code>s1</code> 会发生什么：</p>
+<pre><code class="language-rust ignore">let s1 = String::from(&quot;hello&quot;);
+let s2 = s1;
+
+println!(&quot;{}, world!&quot;, s1);
+</code></pre>
+<p>你会得到一个类似如下的错误，因为 Rust 禁止你使用无效的引用。</p>
+<pre><code class="language-text">error[E0382]: use of moved value: `s1`
+ --&gt; src/main.rs:5:28
+  |
+3 |     let s2 = s1;
+  |         -- value moved here
+4 |
+5 |     println!(&quot;{}, world!&quot;, s1);
+  |                            ^^ value used here after move
+  |
+  = note: move occurs because `s1` has type `std::string::String`, which does
+  not implement the `Copy` trait
+</code></pre>
+<p>如果你在其他语言中听说过术语 “浅拷贝”（“shallow copy”）和 “深拷贝”（“deep copy”），那么拷贝指针、长度和容量而不拷贝数据可能听起来像浅拷贝。不过因为 Rust 同时使第一个变量无效化了，这个操作被称为 <strong>移动</strong>（<em>move</em>），而不是浅拷贝。上面的例子可以解读为 <code>s1</code> 被 <strong>移动</strong> 到了 <code>s2</code> 中。那么具体发生了什么，如图 4-4 所示。</p>
+<p><img alt="s1 moved to s2" src="img/trpl04-04.svg" class="center" style="width: 50%;" /></p>
+<p><span class="caption">图 4-4：<code>s1</code> 无效化之后的内存表现</span></p>
+<p>这样就解决了我们的麻烦！因为只有 <code>s2</code> 是有效的，当其离开作用域，它就释放自己的内存，完毕。</p>
+<p>另外，这里还隐含了一个设计选择：Rust 永远也不会自动创建数据的 “深拷贝”。因此，任何 <strong>自动</strong> 的复制可以被认为对运行时性能影响较小。</p>
+<a class="header" href="ch04-01-what-is-ownership.html#a变量与数据交互的方式二克隆" id="a变量与数据交互的方式二克隆"><h4>变量与数据交互的方式（二）：克隆</h4></a>
+<p>如果我们 <strong>确实</strong> 需要深度复制 <code>String</code> 中堆上的数据，而不仅仅是栈上的数据，可以使用一个叫做 <code>clone</code> 的通用函数。第五章会讨论方法语法，不过因为方法在很多语言中是一个常见功能，所以之前你可能已经见过了。</p>
+<p>这是一个实际使用 <code>clone</code> 方法的例子：</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+let s1 = String::from(&quot;hello&quot;);
+let s2 = s1.clone();
+
+println!(&quot;s1 = {}, s2 = {}&quot;, s1, s2);
+#}</code></pre></pre>
+<p>这段代码能正常运行，也是如何显式产生图 4-3 中行为的方式，这里堆上的数据 <strong>确实</strong> 被复制了。</p>
+<p>当出现 <code>clone</code> 调用时，你知道一些特定的代码被执行而且这些代码可能相当消耗资源。你很容易察觉到一些不寻常的事情正在发生。</p>
+<a class="header" href="ch04-01-what-is-ownership.html#a只在栈上的数据拷贝" id="a只在栈上的数据拷贝"><h4>只在栈上的数据：拷贝</h4></a>
+<p>这里还有一个没有提到的小窍门。这些代码使用了整型并且是有效的，他们是之前示例 4-2 中的一部分：</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+let x = 5;
+let y = x;
+
+println!(&quot;x = {}, y = {}&quot;, x, y);
+#}</code></pre></pre>
+<p>他们似乎与我们刚刚学到的内容相抵触：没有调用 <code>clone</code>，不过 <code>x</code> 依然有效且没有被移动到 <code>y</code> 中。</p>
+<p>原因是像整型这样的在编译时已知大小的类型被整个储存在栈上，所以拷贝其实际的值是快速的。这意味着没有理由在创建变量 <code>y</code> 后使 <code>x</code> 无效。换句话说，这里没有深浅拷贝的区别，所以这里调用 <code>clone</code> 并不会与通常的浅拷贝有什么不同，我们可以不用管它。</p>
+<p>Rust 有一个叫做 <code>Copy</code> trait 的特殊注解，可以用在类似整型这样的储存在栈上的类型（第十章详细讲解 trait）。如果一个类型拥有 <code>Copy</code> trait，一个旧的变量在将其赋值给其他变量后仍然可用。Rust 不允许自身或其任何部分实现了 <code>Drop</code> trait 的类型使用 <code>Copy</code> trait。如果我们对其值离开作用域时需要特殊处理的类型使用 <code>Copy</code> 注解，将会出现一个编译时错误。关于如何为你的类型增加 <code>Copy</code> 注解，请阅读附录 C 中的可导出 trait。</p>
+<p>那么什么类型是 <code>Copy</code> 的呢？可以查看给定类型的文档来确认，不过作为一个通用的规则，任何简单标量值的组合可以是 <code>Copy</code> 的，任何需要分配内存，或者本身就是某种形式资源的类型不会是 <code>Copy</code> 的。如下是一些 <code>Copy</code> 的类型：</p>
+<ul>
+<li>所有整数类型，比如 <code>u32</code>。</li>
+<li>布尔类型，<code>bool</code>，它的值是 <code>true</code> 和 <code>false</code>。</li>
+<li>所有浮点数类型，比如 <code>f64</code>。</li>
+<li>元组，当且仅当其包含的类型也都是 <code>Copy</code> 的时候。<code>(i32, i32)</code> 是 <code>Copy</code> 的，不过 <code>(i32, String)</code> 就不是。</li>
+</ul>
+<a class="header" href="ch04-01-what-is-ownership.html#a所有权与函数" id="a所有权与函数"><h3>所有权与函数</h3></a>
+<p>将值传递给函数在语义上与给变量赋值相似。向函数传递值可能会移动或者复制，就像赋值语句一样。示例 4-7 是一个展示变量何时进入和离开作用域的例子：</p>
+<p><span class="filename">文件名: src/main.rs</span></p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let s = String::from(&quot;hello&quot;);  // s comes into scope.
+
+    takes_ownership(s);             // s's value moves into the function...
+                                    // ... and so is no longer valid here.
+
+    let x = 5;                      // x comes into scope.
+
+    makes_copy(x);                  // x would move into the function,
+                                    // but i32 is Copy, so it’s okay to still
+                                    // use x afterward.
+
+} // Here, x goes out of scope, then s. But since s's value was moved, nothing
+  // special happens.
+
+fn takes_ownership(some_string: String) { // some_string comes into scope.
+    println!(&quot;{}&quot;, some_string);
+} // Here, some_string goes out of scope and `drop` is called. The backing
+  // memory is freed.
+
+fn makes_copy(some_integer: i32) { // some_integer comes into scope.
+    println!(&quot;{}&quot;, some_integer);
+} // Here, some_integer goes out of scope. Nothing special happens.
+</code></pre></pre>
+<p><span class="caption">示例 4-3：带有所有权和作用域标注的函数</span></p>
+<p>当尝试在调用 <code>takes_ownership</code> 后使用 <code>s</code> 时，Rust 会抛出一个编译时错误。这些静态检查使我们免于犯错。试试在 <code>main</code> 函数中添加使用 <code>s</code> 和 <code>x</code> 的代码来看看哪里能使用他们，以及所有权规则会在哪里阻止我们这么做。</p>
+<a class="header" href="ch04-01-what-is-ownership.html#a返回值与作用域" id="a返回值与作用域"><h3>返回值与作用域</h3></a>
+<p>返回值也可以转移作用域。这里是一个拥有与示例 4-3 中类似标注的例子：</p>
+<p><span class="filename">文件名: src/main.rs</span></p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let s1 = gives_ownership();         // gives_ownership moves its return
+                                        // value into s1.
+
+    let s2 = String::from(&quot;hello&quot;);     // s2 comes into scope.
+
+    let s3 = takes_and_gives_back(s2);  // s2 is moved into
+                                        // takes_and_gives_back, which also
+                                        // moves its return value into s3.
+} // Here, s3 goes out of scope and is dropped. s2 goes out of scope but was
+  // moved, so nothing happens. s1 goes out of scope and is dropped.
+
+fn gives_ownership() -&gt; String {             // gives_ownership will move its
+                                             // return value into the function
+                                             // that calls it.
+
+    let some_string = String::from(&quot;hello&quot;); // some_string comes into scope.
+
+    some_string                              // some_string is returned and
+                                             // moves out to the calling
+                                             // function.
+}
+
+// takes_and_gives_back will take a String and return one.
+fn takes_and_gives_back(a_string: String) -&gt; String { // a_string comes into
+                                                      // scope.
+
+    a_string  // a_string is returned and moves out to the calling function.
+}
+</code></pre></pre>
+<p>变量的所有权总是遵循相同的模式：将值赋值给另一个变量时移动它。当持有堆中数据值的变量离开作用域时，其值将通过 <code>drop</code> 被清理掉，除非数据被移动为另一个变量所有。</p>
+<p>在每一个函数中都获取并接着返回所有权可能有些冗余。如果我们想要函数使用一个值但不获取所有权该怎么办呢？如果我们还要接着使用它的话，每次都传递出去再传回来就有点烦人了，如果真的这样做，有时一个函数就需要有多个返回值。</p>
+<p>当然，我们可以使用元组来返回多个值，像这样：</p>
+<p><span class="filename">文件名: src/main.rs</span></p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let s1 = String::from(&quot;hello&quot;);
+
+    let (s2, len) = calculate_length(s1);
+
+    println!(&quot;The length of '{}' is {}.&quot;, s2, len);
+}
+
+fn calculate_length(s: String) -&gt; (String, usize) {
+    let length = s.len(); // len() returns the length of a String.
+
+    (s, length)
+}
+</code></pre></pre>
+<p>但是这未免有些形式主义，而且这种场景应该很常见。幸运的是，Rust 对此提供了一个功能，叫做 <strong>引用</strong>（<em>references</em>）。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="ch04-00-understanding-ownership.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="ch04-02-references-and-borrowing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="ch04-00-understanding-ownership.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="ch04-02-references-and-borrowing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+
+        
+        <script src="searchindex.js" type="text/javascript" charset="utf-8"></script>
+        
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+    </body>
+</html>
